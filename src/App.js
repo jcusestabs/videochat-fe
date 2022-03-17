@@ -26,11 +26,8 @@ function App() {
   useEffect(() => {
     navigator.mediaDevices
       .getUserMedia({
-        video: {
-          width: 480,
-          height: 480,
-        },
-        audio: true,
+        video: true,
+	audio: true,
       })
       .then((stream) => {
         setStream(stream);
