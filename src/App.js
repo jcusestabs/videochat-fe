@@ -8,7 +8,8 @@ import Peer from "simple-peer";
 import io from "socket.io-client";
 import "./App.css";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect(process.env.REACT_APP_HOST);
+alert(process.env.REACT_APP_HOST);
 function App() {
   const [me, setMe] = useState("");
   const [stream, setStream] = useState();
