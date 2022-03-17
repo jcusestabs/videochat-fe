@@ -27,11 +27,12 @@ function App() {
     navigator.mediaDevices
       .getUserMedia({
         video: true,
-	audio: true,
+        audio: true,
       })
       .then((stream) => {
         setStream(stream);
         myVideo.current.srcObject = stream;
+        myVideo.current.play();
       });
 
     socket.on("me", (id) => {
@@ -62,6 +63,7 @@ function App() {
     });
     peer.on("stream", (stream) => {
       userVideo.current.srcObject = stream;
+      userVideo.current.play();
     });
     socket.on("callAccepted", (signal) => {
       setCallAccepted(true);
@@ -83,6 +85,7 @@ function App() {
     });
     peer.on("stream", (stream) => {
       userVideo.current.srcObject = stream;
+      userVideo.current.play();
     });
 
     peer.signal(callerSignal);
@@ -119,7 +122,7 @@ function App() {
                 aspectRatio: "16/9",
               }}
             >
-              {stream && <video playsInline autoplay muted ref={myVideo}  />}
+              {stream && <video muted ref={myVideo} />}
             </Card>
             <Card
               variant="outlined"
@@ -129,9 +132,7 @@ function App() {
                 aspectRatio: "16/9",
               }}
             >
-              {callAccepted && !callEnded ? (
-                <video playsInline autoplay ref={userVideo} />
-              ) : null}
+              {callAccepted && !callEnded ? <video ref={userVideo} /> : null}
             </Card>
           </Grid>
           <Grid item xs={4} sx={{ padding: 3, textAlign: "center" }}>
