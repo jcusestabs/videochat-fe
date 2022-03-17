@@ -103,7 +103,8 @@ function App() {
         <Grid container>
           <Grid
             item
-            xs={8}
+            xs={12}
+            md={8}
             sx={{
               width: "100%",
               height: "100vh",
@@ -127,16 +128,24 @@ function App() {
             <Card
               variant="outlined"
               sx={{
+                textAlign: "center",
                 height: "50%",
                 maxWidth: "480px",
                 aspectRatio: "16/9",
               }}
             >
-              {callAccepted && !callEnded ? <video ref={userVideo} /> : null}
+              {callAccepted && !callEnded ? (
+                <video ref={userVideo} />
+              ) : (
+                <T variant="h4" sx={{ margin: 3 }}>
+                  Waiting for other party
+                </T>
+              )}
             </Card>
           </Grid>
-          <Grid item xs={4} sx={{ padding: 3, textAlign: "center" }}>
+          <Grid item xs={12} md={4} sx={{ padding: 3, textAlign: "center" }}>
             <Card
+              minWidth="sm"
               sx={{
                 p: 2,
                 display: "flex",
