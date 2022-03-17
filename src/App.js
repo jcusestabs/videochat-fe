@@ -119,7 +119,7 @@ function App() {
                 aspectRatio: "16/9",
               }}
             >
-              {stream && <video playsInline muted ref={myVideo}  />}
+              {stream && <video playsInline autoplay muted ref={myVideo}  />}
             </Card>
             <Card
               variant="outlined"
@@ -130,7 +130,7 @@ function App() {
               }}
             >
               {callAccepted && !callEnded ? (
-                <video playsInline ref={userVideo} />
+                <video playsInline autoplay ref={userVideo} />
               ) : null}
             </Card>
           </Grid>
